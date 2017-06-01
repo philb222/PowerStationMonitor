@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AdminPowerStations.APIs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AdminPowerStations.APIs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="PowerUsage_AllStations_OneSecond">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReadingHour" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="ReadingMinute" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="ReadingSecond" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="Station01PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station02PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station03PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station04PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station05PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station06PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station07PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station08PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station09PowerUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Station10PowerUsage" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PowerUsage_AllStations_OneSecond" nillable="true" type="tns:PowerUsage_AllStations_OneSecond" />
+  <xs:complexType name="PowerUsage_OneStation_15Minutes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PowerUsage" nillable="true" type="q1:ArrayOfdecimal" />
+      <xs:element minOccurs="0" name="ReadingHour" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="StartReadingMinute" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="StationLocation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationNumber" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="StationPhone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PowerUsage_OneStation_15Minutes" nillable="true" type="tns:PowerUsage_OneStation_15Minutes" />
+</xs:schema>

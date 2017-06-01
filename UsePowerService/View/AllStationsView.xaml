@@ -1,0 +1,147 @@
+﻿<vb:WindowBase x:Class="UsePowerService.View.AllStationsView"
+			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			xmlns:cb="clr-namespace:DllCoiledButton;assembly=DllCoiledButton"
+			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			xmlns:mem="clr-namespace:MemoryControl;assembly=MemoryControl"
+			xmlns:meter="clr-namespace:DllMeter;assembly=DllMeter"
+			xmlns:local="clr-namespace:UsePowerService"
+			mc:Ignorable="d"
+			xmlns:vb="clr-namespace:UsePowerService.View"
+			Title="Monitor All Stations" Height="620" Width="1100" 
+			WindowStartupLocation="CenterScreen" Background="Black"
+			Loaded="Window_Loaded"
+			Closing="WindowBase_Closing">
+    <Border BorderBrush="Blue" BorderThickness="10" CornerRadius="0">
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <!-- Row 0 of meters ============================================================================= -->
+            <meter:SmartMeter Grid.Column="0" Grid.Row="0" Style="{StaticResource Meter1}"
+                              SM_Description="Stn1 Surrey (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station1Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="1"/>
+
+            <meter:SmartMeter Grid.Column="1" Grid.Row="0" Style="{StaticResource Meter1}"
+                              SM_Description="Stn2 West Vancouver (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station2Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="2"/>
+
+			<meter:SmartMeter Grid.Column="2" Grid.Row="0" Style="{StaticResource Meter1}"
+                              SM_Description="Stn3 North Vancouver (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station3Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="3"/>
+
+            <meter:SmartMeter Grid.Column="3" Grid.Row="0" Style="{StaticResource Meter1}"
+                              SM_Description="Stn4 Central Vancouver (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station4Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="4"/>
+
+            <meter:SmartMeter Grid.Column="4" Grid.Row="0" Style="{StaticResource Meter1}"
+                              SM_Description="Stn5 South Burnaby (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station5Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="5"/>
+
+            <!-- Row 1 of meters ============================================================================= -->
+            <meter:SmartMeter Grid.Column="0" Grid.Row="1" Style="{StaticResource Meter1}"
+                              SM_Description="Stn6 North Burnaby (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station6Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="6"/>
+
+            <meter:SmartMeter Grid.Column="1" Grid.Row="1" Style="{StaticResource Meter1}"
+                              SM_Description="Stn7 Port Moody (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station7Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="7"/>
+
+            <meter:SmartMeter Grid.Column="2" Grid.Row="1" Style="{StaticResource Meter1}"
+                              SM_Description="Stn8 Coquitlam (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station8Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="8"/>
+
+            <meter:SmartMeter Grid.Column="3" Grid.Row="1" Style="{StaticResource Meter1}"
+                              SM_Description="Stn9 Port Coquitlam (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station9Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="9"/>
+
+            <meter:SmartMeter Grid.Column="4" Grid.Row="1" Style="{StaticResource Meter1}"
+                              SM_Description="Stn10 Maple Ridge (MW)"
+                              SM_MeterValue="{Binding Path=AllStations.Station10Source}"
+							  Command="meter:SmartMeter.SM_Command" CommandParameter="10"/>
+
+            <!-- Row 2 of meters ============================================================================= -->
+            <meter:SmartMeter Grid.Column="0" Grid.Row="2" Style="{StaticResource Meter2}"
+                              SM_Description="Fuel Level (Gal)" SM_Minimum="0" SM_Maximum="16"
+                              SM_MeterValue="11.4"/>
+
+            <meter:SmartMeter Grid.Column="1" Grid.Row="2" Style="{StaticResource Meter2}"
+                              SM_Description="Oil Pressure (PSI)" SM_Minimum="0" SM_Maximum="40" SM_Threshold="35"
+                              SM_MeterValue="28.7"/>
+
+            <meter:SmartMeter Grid.Column="2" Grid.Row="2" Style="{StaticResource Meter2}"
+                              SM_Description="Burgers in Mouth" SM_Minimum="0" SM_Maximum="10" SM_Threshold="7.5"
+                              SM_MeterValue="2"/>
+
+            <meter:SmartMeter Grid.Column="3" Grid.Row="2" Style="{StaticResource Meter2}"
+                              SM_Description="Miles per Gallon (MPG)" SM_Minimum="0" SM_Maximum="80"
+                              SM_MeterValue="32.5"/>
+
+            <meter:SmartMeter Grid.Column="4" Grid.Row="2" Style="{StaticResource Meter2}"
+                              SM_Description="Speed (MPH)" SM_Minimum="0" SM_Maximum="120" SM_Threshold="90"
+                              SM_MeterValue="55.6"/>
+
+            <!-- Row 3 divider ======================================================================================== -->
+            <Rectangle Height="10" Width="940" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5" Fill="Blue" RadiusX="10" RadiusY="10"/>
+
+            <!-- Row 4 ================================================================================================ -->
+            <!-- Row 4 Message Area -->
+            <ScrollViewer x:Name="Scroller"  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Width="380"
+                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+                           Focusable="False" Margin="0 0 0 10">
+                <TextBlock x:Name="txtMessage" TextWrapping="Wrap" 
+                           Width="{Binding ElementName=Scroller, Path=ViewportWidth}"
+                           Foreground="Yellow"  Text="{Binding Path=StatusMessage}"/>
+            </ScrollViewer>
+
+            <!-- Row 4 Time Area -->
+            <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Margin="11 0 0 15" Background="#002200" >
+                <StackPanel>
+                    <Label Width="140" Content="Data Source Time" Height="15"/>
+                    <Label x:Name="labTimeZone" Width="140" Height="16" />
+                </StackPanel>
+				<Label Content="{Binding Path=AllStations.CurrentHour}" Width="16" />
+				<Label Content="{Binding Path=AllStations.CurrentMinute}" Width="16" />
+				<Label Content="{Binding Path=AllStations.CurrentSecond}" Width="17" />
+            </StackPanel>
+
+			<!--<mem:MemoryUtility Grid.Column="3" Grid.Row="4" Foreground="Black"/>-->
+
+			<cb:CoiledButton x:Name="QuitButton" CB_Click="QuitButton_CB_Click"
+                             Grid.Column="4" Grid.Row="4" 
+							 ToolTip="Exit the application"
+                             HorizontalAlignment="Right" VerticalAlignment="Bottom"
+							 Margin="0 0 0 20" CB_Width="140" CB_Height="40"
+                             CB_CoilColor="Yellow" 
+							 CB_Foreground="Yellow" CB_Background="#002200" 
+							 CB_Text="Quit"
+							 />
+
+        </Grid>
+    </Border>
+</vb:WindowBase>

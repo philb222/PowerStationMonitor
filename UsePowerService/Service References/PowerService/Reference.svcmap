@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2198444f-84d7-467f-ad11-fb4e636a3524" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:65094/APIs/PowerService.svc/mex/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="a720e8d9-2443-4587-884c-8804b5ce5516" SourceId="1" SourceUrl="http://localhost:65094/APIs/PowerService.svc/mex/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="66445d55-880a-4ce7-9aa2-db3a959329a1" SourceId="1" SourceUrl="http://localhost:65094/APIs/PowerService.svc/mex/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c4f1866e-0a12-4926-824e-e3302e1c540b" SourceId="1" SourceUrl="http://localhost:65094/APIs/PowerService.svc/mex/mex" />
+    <MetadataFile FileName="AdminPowerStations.APIs.xsd" MetadataType="Schema" ID="a7be3250-ecdf-41aa-86a5-a1a49fac834c" SourceId="1" SourceUrl="http://localhost:65094/APIs/PowerService.svc/mex/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="b9c05881-1894-4f1b-8d46-f3c558b98da1" SourceId="1" SourceUrl="http://localhost:65094/APIs/PowerService.svc/mex/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

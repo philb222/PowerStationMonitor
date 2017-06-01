@@ -1,0 +1,116 @@
+﻿<local:WindowBase x:Class="UsePowerService.View.PowerStationView"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:cb="clr-namespace:DllCoiledButton;assembly=DllCoiledButton"
+				xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+				xmlns:lc="clr-namespace:DllLineChart;assembly=DllLineChart" 
+				xmlns:local="clr-namespace:UsePowerService.View"
+				xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:mem="clr-namespace:MemoryControl;assembly=MemoryControl"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				Title="Power Station View" Height="810" Width="1020"
+				WindowStartupLocation="CenterScreen" Background="Black"
+				Loaded="Window_Loaded"
+				Closing="Window_Closing">
+	<Border BorderBrush="Blue" BorderThickness="10" CornerRadius="0">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="180"/>
+				<RowDefinition Height="410"/>
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="150"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="500"/>
+				<ColumnDefinition Width="500"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Define top left area for general station information -->
+			<StackPanel Grid.Column="0" Grid.Row="0">
+				<StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+					<Label Style="{StaticResource Label2}" 
+						   Content="Station Name:" />
+					<Label Style="{StaticResource Label3}"
+						   Content="{Binding Path=StationData.StationName}" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+					<Label Style="{StaticResource Label2}" 
+						   Content="Station Number:" />
+					<Label Style="{StaticResource Label3}"
+						   Content="{Binding Path=StationData.StationNumber}" />
+				</StackPanel>
+			</StackPanel>
+
+			<!-- Define top right area for general station information -->
+			<StackPanel Grid.Column="1" Grid.Row="0">
+				<StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+					<Label Style="{StaticResource Label2}" 
+						   Content="Address:" />
+					<Label Style="{StaticResource Label3}"
+						   Content="{Binding Path=StationData.StationLocation}" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+					<Label Style="{StaticResource Label2}" 
+						   Content="Phone:" />
+					<Label Style="{StaticResource Label3}"
+						   Content="{Binding Path=StationData.StationPhone}" />
+				</StackPanel>
+			</StackPanel>
+
+			<!-- Define row 1 left area for selecting a date -->
+			<StackPanel Grid.Column="0" Grid.Row="1">
+				<StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+					<Label Style="{StaticResource Label2}" Content="Select date:"/>
+					<Calendar x:Name="Calendar" Background="LightBlue"/>
+				</StackPanel>
+			</StackPanel>
+
+			<!-- Define row 1 right area for selecting time -->
+			<StackPanel Grid.Column="1" Grid.Row="1">
+				<StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+					<Label Style="{StaticResource Label2}" Content="Select hour:"/>
+					<ListBox x:Name="HourList" Height="160" Width="140" 
+							 ItemsSource="{Binding Path=HourList}"
+							 SelectionChanged="HourList_SelectionChanged"/>
+				</StackPanel>
+			</StackPanel>
+
+			<!-- Define row 2 LineChart for an hour of data -->
+
+			<lc:LineChart x:Name="HourChart" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+						  CcWidth="900" CcHeight="410"
+						  CcChartName="{Binding Path=StationData.HourChartTitle}"
+						  CcThresholdHigh="100" 
+						  CcXaxisValues="{Binding Path=StationData.HourXaxisValues}"/>
+
+			<!-- Row 3 divider ======================================================================================== -->
+			<Rectangle Height="10" Width="940" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5" Fill="Blue" RadiusX="10" RadiusY="10"/>
+
+			<!-- Row 4 ================================================================================================ -->
+			<!-- Row 4 Message Area -->
+			<ScrollViewer x:Name="Scroller"  Grid.Column="0" Grid.Row="4" Width="380"
+                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+                           Focusable="False" Margin="0 0 0 10">
+				<TextBlock x:Name="txtMessage" TextWrapping="Wrap" 
+                           Width="{Binding ElementName=Scroller, Path=ViewportWidth}"
+                           Foreground="Yellow"  Text="{Binding Path=StatusMessage}"/>
+			</ScrollViewer>
+
+			<!-- Row 4 Close button -->
+			<StackPanel Grid.Column="1" Grid.Row="4"
+						Orientation="Horizontal" HorizontalAlignment="Right">
+
+				<Button Style="{StaticResource NormalButton}"
+						x:Name="btnClose" Click="btnClose_Click" IsCancel="True"
+						Width="140" Height="40"
+						Margin="0 0 30 30" ToolTip="Close this window">
+					<Button.Content>
+						<Label Content="Close"
+							   Background="{StaticResource linBrush1}"/>
+					</Button.Content>
+				</Button>
+			</StackPanel>
+
+		</Grid>
+	</Border>
+</local:WindowBase>
